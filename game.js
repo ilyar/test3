@@ -24,10 +24,12 @@ const keys = {};
 
 document.addEventListener('keydown', (e) => {
     keys[e.key] = true;
+    e.preventDefault();
 });
 
-document.addEventListener('keydown', (e) => {
+document.addEventListener('keyup', (e) => {
     keys[e.key] = false;
+    e.preventDefault();
 });
 
 // Создание сокровищ
