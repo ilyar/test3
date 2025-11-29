@@ -22,14 +22,18 @@ let guards = [];
 // Управление
 const keys = {};
 
-document.addEventListener('keydown', (e) => {
-    keys[e.key] = true;
-    e.preventDefault();
+window.addEventListener('keydown', (e) => {
+    if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'w', 'a', 's', 'd'].includes(e.key)) {
+        keys[e.key] = true;
+        e.preventDefault();
+    }
 });
 
-document.addEventListener('keyup', (e) => {
-    keys[e.key] = false;
-    e.preventDefault();
+window.addEventListener('keyup', (e) => {
+    if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'w', 'a', 's', 'd'].includes(e.key)) {
+        keys[e.key] = false;
+        e.preventDefault();
+    }
 });
 
 // Создание сокровищ
@@ -282,3 +286,6 @@ function gameLoop() {
 // Запуск игры
 initLevel();
 gameLoop();
+
+// Установка фокуса на canvas
+canvas.focus();
